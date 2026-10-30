@@ -3,11 +3,20 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from urllib.request import urlopen
 
 
 def main():
     project_dir = Path(__file__).resolve().parent
     os.chdir(project_dir)
+
+    try:
+        with urlopen("http://localhost:3000", timeout=2) as response:
+            if response.headers.get("X-Powered-By") == "Next.js":
+                print("The website is already running at http://localhost:3000")
+                return
+    except OSError:
+        pass
 
     npm_cmd = shutil.which("npm")
     if not npm_cmd:
@@ -23,8 +32,12 @@ def main():
             sys.exit(result.returncode)
 
     print("Starting the website...")
-    print("Open: http://localhost:3000")
-    subprocess.run([npm_cmd, "run", "dev", "--", "--hostname", "0.0.0.0", "--port", "3000"], cwd=project_dir)
+    print("Open the Local URL printed by Next.js below.")
+    result = subprocess.run(
+        [npm_cmd, "run", "dev", "--", "--hostname", "0.0.0.0"],
+        cwd=project_dir,
+    )
+    sys.exit(result.returncode)
 
 
 if __name__ == "__main__":
