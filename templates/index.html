@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7f4">
+    <meta
+      name="description"
+      content="ARTI is a space to discover and celebrate art."
+    >
+    <title>ARTI — A space for art</title>
+    <link rel="icon" href="{{ url_for('static', filename='arti.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+  </head>
+  <body>
+    <main class="page">
+      <header class="site-header">
+        <a class="wordmark" href="#home" aria-label="ARTI home">ARTI<span>.</span></a>
+        <a class="header-link" href="#about">About ARTI</a>
+      </header>
+
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <p class="eyebrow">ART • COMMUNITY • INSPIRATION</p>
+        <h1 id="hero-title">A space for<br><span>art and artists.</span></h1>
+        <p class="intro">
+          Welcome to ARTI — a place to share creative work, find inspiration,
+          and celebrate the people who make art.
+        </p>
+        <a class="primary-link" href="#about">
+          Discover ARTI
+          <span aria-hidden="true">↗</span>
+        </a>
+        <div class="artwork" role="img" aria-label="Abstract artwork in warm colors">
+          <span class="artwork-shape shape-one"></span>
+          <span class="artwork-shape shape-two"></span>
+          <span class="artwork-shape shape-three"></span>
+          <span class="artwork-caption">MAKE ROOM FOR CREATIVITY</span>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">A LITTLE ABOUT US</p>
+        <h2 id="about-title">Creativity belongs everywhere.</h2>
+        <p>
+          ARTI celebrates artistic expression and the people behind it. Take
+          your time, look closer, and find something that speaks to you.
+        </p>
+      </section>
+
+      <footer class="site-footer">
+        <a class="wordmark" href="#home">ARTI<span>.</span></a>
+        <p>Made for the love of art.</p>
+      </footer>
+    </main>
+  </body>
+</html>
