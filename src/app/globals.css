@@ -1,26 +1,196 @@
-@import "tailwindcss";
-
 :root {
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --border: rgb(0 0 0 / 8%);
+  --subtle-background: rgb(0 0 0 / 5%);
+  --hover-background: #f2f2f2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: dark;
     --background: #0a0a0a;
     --foreground: #ededed;
+    --border: rgb(255 255 255 / 15%);
+    --subtle-background: rgb(255 255 255 / 6%);
+    --hover-background: #1a1a1a;
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
+  gap: 64px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 32px 32px 80px;
+}
+
+.main-content {
+  display: flex;
+  grid-row: 2;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.next-logo {
+  width: 180px;
+  height: auto;
+}
+
+.getting-started {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.first-instruction {
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.file-name {
+  border-radius: 0.25rem;
+  background: var(--subtle-background);
+  padding: 0.125rem 0.25rem;
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-link {
+  display: flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.primary-action {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.primary-action:hover {
+  background: #383838;
+}
+
+.vercel-logo {
+  width: 20px;
+  height: auto;
+}
+
+.secondary-action {
+  width: 100%;
+  border-color: var(--border);
+}
+
+.secondary-action:hover {
+  border-color: transparent;
+  background: var(--hover-background);
+}
+
+.footer-links {
+  display: flex;
+  grid-row: 3;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .next-logo,
+  .vercel-logo {
+    filter: invert(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 80px;
+  }
+
+  .main-content {
+    align-items: flex-start;
+  }
+
+  .getting-started {
+    text-align: left;
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .action-link {
+    min-height: 3rem;
+    padding: 0 1.25rem;
+    font-size: 1rem;
+  }
+
+  .secondary-action {
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
